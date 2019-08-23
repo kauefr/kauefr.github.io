@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Atualização - art. 916 do CPC</title>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.7/dist/semantic.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.7/dist/semantic.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js" integrity="sha256-ufGElb3TnOtzl5E4c/qQnZFGP+FYEZj5kbSEdJNrw0A=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="ui menu">
+			<a href="index.html" class="item">Início</a>
+		</div>
+		<div class="ui field">
+			<input class="ui field date fluid input" type="date">
+		</div>
+		<h3>Month and year</h3>
+  <div class="ui calendar" id="example7">
+    <div class="ui input left icon">
+      <i class="time icon"></i>
+      <input type="text" placeholder="Time">
+    </div>
+  </div>
+</div>
+<div class="ui checkbox">
+  <input type="checkbox" name="example">
+  <label>Make my profile visible</label>
+</div>
+	<script type="text/javascript" src="util.js"></script>
+	<script type="text/javascript" src="a916.js"></script>
+	<script type="text/javascript">
+		$('#example7').calendar({
+  type: 'month',
+  text: {
+  days: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+  months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+  monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+  today: 'Hoje',
+  now: 'Agora',
+  am: 'AM',
+  pm: 'PM'
+}
+});
+		$('.ui.checkbox').checkbox();
+	</script>
+</body>
+</html>
