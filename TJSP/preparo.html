@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cálculo do Preparo</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js" integrity="sha256-ufGElb3TnOtzl5E4c/qQnZFGP+FYEZj5kbSEdJNrw0A=" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
+	<!-- You MUST include jQuery before Fomantic -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.7/dist/semantic.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.7/dist/semantic.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
 	<div id="app">
 		<div class="ui menu">
@@ -17,7 +20,7 @@
 		</div>
 		<h1 class="ui centered header">Cálculo do Preparo</h1>
 		<form class="ui text container form segment">
-			<div class="field">	
+			<div class="field">
 				<label>Valor da Causa</label>
 				<centavos-input ref="causaInput" v-model="valorCausa" autofocus></centavos-input>
 			</div>
@@ -29,7 +32,7 @@
 				</div>
 			</div>
 
-			<div class="field" v-if="hasCondenacao">	
+			<div class="field" v-if="hasCondenacao">
 				<label>Valor da Condenação</label>
 				<centavos-input ref="condenacaoInput" v-model="valorCondenacao"></centavos-input>
 			</div>
@@ -37,11 +40,13 @@
 			<h4 class="ui horizontal divider">Valor do Preparo</h4>
 			<centavos-input v-model="valorPreparo" readonly></centavos-input>
 			<div class="ui divider"></div>
-			<copiavel-button class="ui primary button" :conteudo="notaDeCartorio">Copiar para Área de Transferência</copiavel-button>
+			<copiavel-button class="ui primary button" :conteudo="notaDeCartorio">Copiar para Área de Transferência
+			</copiavel-button>
 			<input class="ui negative button" type="button" value="Limpar Valores" @click="limparValores">
 		</form>
 	</div>
 	<script type="text/javascript" src="util.js"></script>
 	<script type="text/javascript" src="preparo.js"></script>
 </body>
+
 </html>
