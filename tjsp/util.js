@@ -16,7 +16,7 @@ Vue.component('centavos-input', {
 		}
 	},
 	template: `<input
-	type="text"
+	type="tel"
 	:value="mask(value)"
 	@input="$emit('input', unmask($event.target.value))"
 	:readonly="readonly"
