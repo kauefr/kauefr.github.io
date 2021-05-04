@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
     return (
-      <nav className='navbar is-primary'>
+      <nav className='navbar is-dark'>
         <div className='navbar-brand'>
           <Link to='/' className='navbar-item'>
               <span className='icon is-medium'><i className='las la-home la-2x' /></span>
