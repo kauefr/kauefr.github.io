@@ -7,4 +7,30 @@ export default class CalculoPreparo {
     valorDaCausa = 0;
     valorDaCondenacao = 0;
     sentencaCondenatoria = false;
+    get custasIniciais() {
+        return Math.min(
+            this.parcelaMaxima,
+            Math.max(
+                this.parcelaMinima,
+                this.taxaInicial * this.valorDaCausa
+            )
+        );
+    }
+    get custasPreparo() {
+        return Math.min(
+            this.parcelaMaxima,
+            Math.max(
+                this.parcelaMinima,
+                this.taxaPreparo * (this.sentencaCondenatoria ? this.valorDaCondenacao : this.valorDaCausa)
+            )
+        );
+    }
+
+    constructor(params = undefined) {
+        Object.assign(this, params);
+    }
+
+    with(params = undefined) {
+        return Object.assign(new CalculoPreparo(), this, params);
+    }
 }
