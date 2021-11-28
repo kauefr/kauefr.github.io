@@ -1,0 +1,2 @@
+(this["webpackJsonpkauefr.github.io"]=this["webpackJsonpkauefr.github.io"]||[]).push([[0],{21:function(e,t,c){},28:function(e,t,c){"use strict";c.r(t);var n=c(0),i=c.n(n),r=c(14),s=c.n(r),a=(c(21),c(15)),j=c(1),o=c(6);var h=function(){return Object(o.jsx)(a.a,{children:Object(o.jsx)(j.c,{children:Object(o.jsx)(j.a,{path:"/",exact:!0,children:Object(o.jsx)("div",{children:"Home"})})})})};s.a.render(Object(o.jsx)(i.a.StrictMode,{children:Object(o.jsx)(h,{})}),document.getElementById("root"))}},[[28,1,2]]]);
+//# sourceMappingURL=main.cc2778b0.chunk.js.map
