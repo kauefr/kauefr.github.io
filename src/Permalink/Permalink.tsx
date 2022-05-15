@@ -1,5 +1,5 @@
 import { Navigate, useParams } from "react-router-dom";
-import ExternalRedirect from "../utils/ExternalRedirect";
+import ExternalRedirect from "./ExternalRedirect";
 
 export default function Permalink(): JSX.Element {
     let { permalinkId } = useParams();
