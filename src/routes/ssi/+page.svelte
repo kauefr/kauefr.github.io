@@ -4,7 +4,7 @@
 
 <section class="section">
     <div class="container">
-        <h1 class="title">{_("Hello World")}</h1>
+        <h1 class="title">Seven Seas Idle</h1>
     </div>
 </section>
 

@@ -1,10 +1,14 @@
 export const translations = new Map([
     ["en", new Map([
+        ["Hello World", "Hello World"],
+        ["Home", "Home"],
         ["locale-name", "English"],
         ["theme-dark", "Dark Theme"],
         ["theme-light", "Light Theme"]
     ])],
     ["pt-BR", new Map([
+        ["Hello World", "Olá Mundo"],
+        ["Home", "Página Inicial"],
         ["locale-name", "Português (Brasil)"],
         ["theme-dark", "Tema Escuro"],
         ["theme-light", "Tema Claro"]
