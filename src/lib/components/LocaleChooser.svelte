@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { translations, localeInfo, _ } from "$lib/util/L10n.svelte";
+    import { localeInfo, translations } from "$lib/localization/Localization.svelte";
+
     let value = $state(localeInfo.currentLocale);
     $effect(() => {
         localeInfo.currentLocale = value;
@@ -10,8 +11,8 @@
 <div class="control has-icons-left">
     <div class="select">
         <select bind:value>
-            {#each translations as [l, t]}
-                <option value={l}>{t.get("locale-name")}</option>
+            {#each Object.entries(translations) as [l, t]}
+                <option value={l}>{t["locale-name"]}</option>
             {/each}
         </select>
     </div>

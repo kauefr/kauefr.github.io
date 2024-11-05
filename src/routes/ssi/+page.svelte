@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { _ } from "$lib/util/L10n.svelte";
 </script>
 
 <section class="section">

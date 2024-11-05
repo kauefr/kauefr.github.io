@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { _ } from "$lib/util/L10n.svelte";
+    import { _ } from "$lib/localization/Localization.svelte";
     import { routes } from "$lib/util/Routes";
     import LocaleChooser from "./LocaleChooser.svelte";
     import ThemeChooser from "./ThemeChooser.svelte";

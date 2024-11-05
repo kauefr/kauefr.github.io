@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { _ } from "$lib/util/L10n.svelte";
+    import { _ } from "$lib/localization/Localization.svelte";
 </script>
 
 <section class="section">
