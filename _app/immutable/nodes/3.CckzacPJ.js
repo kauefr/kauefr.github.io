@@ -1,0 +1,1 @@
+import{a,t as s}from"../chunks/disclose-version.DajhIUqf.js";var o=s('<section class="section"><div class="container"><h1 class="title">Seven Seas Idle</h1></div></section>');function c(e){var t=o();a(e,t)}export{c as component};
