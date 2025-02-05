@@ -1,13 +1,26 @@
 <script lang="ts">
-    import Testcomp from "./Testcomp.svelte";
+    import {gameState} from "./GameState.svelte"
+    let currentImproving = $state("points");
+    const ticksPerSecond = 60;
+    $effect(() => {
+        const timer = setInterval(()=>{
+            const now = Date.now();
+            let timeElapsed = now - gameState.lastUpdated;
+            if (currentImproving == "points") {
+                gameState.points += gameState.speed/((timeElapsed)/ticksPerSecond);
+            } else {
+                gameState.speed += gameState.speed * 0.1/((timeElapsed)/ticksPerSecond);
+            }
+            gameState.lastUpdated = now;
+        }, 1000/ticksPerSecond);
+        return () => {
+            clearInterval(timer);
+        }
+    });
 
 </script>
-
-<section class="section">
-    <div class="container">
-        <h1 class="title">Seven Seas Idle</h1>
-    </div>
-</section>
-<Testcomp/>
+<p>Your points: {gameState.points.toFixed(2)}</p>
+<p>Your speed: {gameState.speed.toFixed(2)}</p>
+<input type="checkbox" onchange={() => {currentImproving = (currentImproving == "points" ? "speed" : "points")}}>
 <style>
 </style>
