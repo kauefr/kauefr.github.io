@@ -1,0 +1,15 @@
+<p>comparador-lca-cdb works!</p>
+<p-table [value]="valores">
+    <ng-template #header>
+        <tr>
+            <th>Selic</th>
+            <th>Rendimento em 2 anos</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-row>
+        <tr>
+            <td>{{ row.selic | percent }}</td>
+            <td>{{ row.renda | percent }}</td>
+        </tr>
+    </ng-template>
+</p-table>
