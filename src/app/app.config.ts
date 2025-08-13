@@ -16,10 +16,11 @@ export const appConfig: ApplicationConfig = {
         preset: Aura,
         options: {
           cssLayer: {
-            name: 'components'
-          }
-        }
-      }
+            name: 'components',
+          },
+          darkModeSelector: '.p-dark',
+        },
+      },
     }),
-  ]
+  ],
 };

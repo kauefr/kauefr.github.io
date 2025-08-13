@@ -1,8 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 @import "primeicons/primeicons.css";
 @plugin "tailwindcss-primeui";
 
+/* Dark mode configuration in Tailwind */
+@custom-variant dark (&:where(.p-dark, .p-dark *));
+/*
 html, body {
     height: 100%;
     margin: 0;
@@ -16,3 +18,4 @@ app-root {
   flex-direction: column;
   flex: auto;
 }
+*/

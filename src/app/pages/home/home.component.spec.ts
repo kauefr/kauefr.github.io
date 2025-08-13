@@ -10,9 +10,8 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HomeComponent],
-      providers: [provideAnimationsAsync()]
-    })
-    .compileComponents();
+      providers: [provideAnimationsAsync()],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
