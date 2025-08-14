@@ -11,7 +11,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { ThemeChooserComponent } from '../../core/theme-chooser/theme-chooser.component';
+import { ThemeChooserComponent } from '../theme-chooser/theme-chooser.component';
 
 @Component({
   selector: 'app-navbar',

@@ -1,14 +1,12 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
   {
-    path: 'angular-demo',
-    title: 'Angular Demo',
+    path: 'ssi',
+    title: 'Seven Seas Idle',
     loadComponent: () =>
-      import('./pages/angular-demo/angular-demo.component').then(
-        (m) => m.AngularDemoComponent
-      ),
+      import('./ssi/ssi.component').then((m) => m.SsiComponent),
   },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '/' },
