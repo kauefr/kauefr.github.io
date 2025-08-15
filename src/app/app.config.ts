@@ -17,6 +17,7 @@ export const appConfig: ApplicationConfig = {
         options: {
           cssLayer: {
             name: 'components',
+            order: 'theme, base, components, utilities',
           },
           darkModeSelector: '.p-dark',
         },

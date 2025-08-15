@@ -9,12 +9,8 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        NavbarComponent,
-      ],
-      providers: [
-        { provide: ActivatedRoute, useValue: null }
-      ],
+      imports: [NavbarComponent],
+      providers: [{ provide: ActivatedRoute, useValue: null }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavbarComponent);
