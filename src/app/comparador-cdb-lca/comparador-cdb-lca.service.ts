@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ComparadorLcaCdbService {
+export class ComparadorCdbLcaService {
   calcular_rentabilidade(args: CalculoOptions): number {
     let result = 0;
     switch (args.mode) {

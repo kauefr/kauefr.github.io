@@ -10,11 +10,16 @@ import { ThemeChooserComponent } from '../theme-chooser/theme-chooser.component'
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  protected readonly $menubarItems = signal<MenuItem[]>([
+  protected readonly menubarItems = signal<MenuItem[]>([
     {
       label: 'Home',
       icon: PrimeIcons.HOME,
       routerLink: '/',
+    },
+    {
+      label: 'Comparador CDB/LCA',
+      icon: PrimeIcons.MONEY_BILL,
+      routerLink: '/comparador-cdb-lca',
     },
   ]);
 }

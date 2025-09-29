@@ -8,7 +8,7 @@
       </tr>
     </ng-template>
     <ng-template #body let-rowData>
-      @let item = _(rowData);
+      @let item = as_TaxasCDBLCA(rowData);
       <tr>
         <td>{{ item.taxa_cdb | percent : "1.0-2" }}</td>
         <td>{{ item.taxa_lca | percent : "1.0-2" }}</td>

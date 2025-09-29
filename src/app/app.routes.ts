@@ -9,11 +9,11 @@ export const routes: Routes = [
       import('./ssi/ssi.component').then((m) => m.SsiComponent),
   },
   {
-    path: 'comparador-lca-cdb',
-    title: 'Comparador LCA/CDB',
+    path: 'comparador-cdb-lca',
+    title: 'Comparador CDB/LCA',
     loadComponent: () =>
-      import('./comparador-lca-cdb/comparador-lca-cdb.component').then(
-        (m) => m.ComparadorLcaCdbComponent
+      import('./comparador-cdb-lca/comparador-cdb-lca.component').then(
+        (m) => m.ComparadorCdbLcaComponent
       ),
   },
   { path: '', component: HomeComponent },
