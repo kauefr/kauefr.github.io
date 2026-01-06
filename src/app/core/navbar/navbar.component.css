@@ -2,3 +2,7 @@ p-menubar {
   border-radius: 0;
   border-width: 0 0 1px;
 }
+
+:host(.navbar--bottom) p-menubar {
+  border-width: 1px 0 0;
+}

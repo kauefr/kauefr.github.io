@@ -6,12 +6,12 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { PercentPipe } from '@angular/common';
-import { NavbarComponent } from '../core/navbar/navbar.component';
 import { as_ } from '../utils/misc';
+import { LayoutComponent } from '../core/layout/layout.component';
 
 @Component({
   selector: 'app-comparador-cdb-lca',
-  imports: [PercentPipe, ReactiveFormsModule, TableModule, NavbarComponent],
+  imports: [PercentPipe, ReactiveFormsModule, TableModule, LayoutComponent],
   templateUrl: './comparador-cdb-lca.component.html',
 })
 export class ComparadorCdbLcaComponent {
