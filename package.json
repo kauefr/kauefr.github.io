@@ -10,7 +10,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "deploy": "ng deploy --cname=kaue.rodrigues.nom.br",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "sv-fishing:build-json": "tsc --project tsconfig.scripts.json && node dist-node/scripts/sv-fishing/build-json.js"
   },
   "private": true,
   "dependencies": {
@@ -38,7 +39,7 @@
     "@angular/cli": "^20.1.6",
     "@angular/compiler-cli": "^20.1.7",
     "@types/jasmine": "~5.1.0",
-    "angular-cli-ghpages": "^2.0.3",
+    "angular-cli-ghpages": "^3.0.2",
     "angular-eslint": "20.0.0",
     "eslint": "^9.28.0",
     "jasmine-core": "~5.5.0",
@@ -49,6 +50,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.5.3",
     "typescript": "~5.8.3",
-    "typescript-eslint": "8.33.1"
+    "typescript-eslint": "8.33.1",
+    "zod": "^4.3.5"
   }
 }
