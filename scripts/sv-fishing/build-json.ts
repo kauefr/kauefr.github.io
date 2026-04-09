@@ -11,7 +11,7 @@ const SOURCEDATA_FOLDER = path.join(
   'scripts',
   'sv-fishing',
   'Content',
-  'Data'
+  'Data',
 );
 const OUTPUT_PATH = path.join(process.cwd(), 'public', 'sv-fishing.json');
 
@@ -47,15 +47,47 @@ const DATA = Object.fromEntries(
     return [
       k,
       v.parser.parse(
-        JSON.parse(fs.readFileSync(v.path, { encoding: 'utf-8' }))
+        JSON.parse(fs.readFileSync(v.path, { encoding: 'utf-8' })),
       ),
     ];
-  })
+  }),
 ) as Record<SourceKeys, object>;
+
+type MergeFishAndObjects<
+  Fish extends Record<string, object>,
+  Objects extends Record<string, object>,
+> = {
+  [K in keyof Fish]: Fish[K] & (K extends keyof Objects ? Objects[K] : {});
+};
+
+function mergeFishWithObjectProps<
+  Fish extends Record<string, object>,
+  Objects extends Record<string, object>,
+>(
+  fishData: Fish,
+  objectsData: Objects,
+): MergeFishAndObjects<Fish, Objects> {
+  return Object.fromEntries(
+    Object.entries(fishData).map(([key, fish]) => [
+      key,
+      { ...fish, ...(objectsData[key] ?? {}) },
+    ]),
+  ) as MergeFishAndObjects<Fish, Objects>;
+}
+
+type FishData = ReturnType<typeof FishJsonSchema.parse>;
+type ObjectsData = ReturnType<typeof ObjectsJsonSchema.parse>;
+
+const FISH_WITH_OBJECTS = mergeFishWithObjectProps(
+  DATA.FISH as FishData,
+  DATA.OBJECTS as ObjectsData,
+);
 
 // --- Main ---
 function main() {
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(DATA), { encoding: 'utf-8' });
+  //console.log(JSON.stringify(FISH_WITH_OBJECTS))
+
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(FISH_WITH_OBJECTS), { encoding: 'utf-8' });
   return;
   // const OUTPUT_TO_CONSOLE = process.argv.length > 2 && process.argv[2] === '-';
 

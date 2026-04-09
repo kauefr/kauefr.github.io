@@ -1,18 +1,20 @@
 import z from 'zod';
 
-const TextureType = {
-  springobjects: 'Maps\\springobjects',
-  Objects_2: 'TileSheets\\Objects_2',
+export const TextureType = {
+  Maps_springobjects: 'Maps\\springobjects',
+  TileSheets_Objects_2: 'TileSheets\\Objects_2',
 } as const;
+export type TextureType = (typeof TextureType)[keyof typeof TextureType];
 
-export const ObjectsJsonSchema = z.record(
-  z.string(),
-  z.object({
-    Name: z.string(),
-    Texture: z
-      .enum(TextureType)
-      .nullable()
-      .transform((v) => v ?? TextureType.springobjects),
-    SpriteIndex: z.number(),
-  })
-);
+export const ObjectSchema = z.object({
+  Name: z.string(),
+  Type: z.string(),
+  Category: z.number(),
+  Texture: z
+    .nullable(z.literal(TextureType.TileSheets_Objects_2))
+    .transform((v) => v ?? TextureType.Maps_springobjects),
+  SpriteIndex: z.number(),
+  ContextTags: z.array(z.string()).nullable(),
+});
+
+export const ObjectsJsonSchema = z.record(z.string(), ObjectSchema);

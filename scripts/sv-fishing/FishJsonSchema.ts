@@ -1,82 +1,75 @@
 import z from 'zod';
 
 const EntryArrayLength = {
-  TrapFish: 8,
-  PoleFish: 14,
+  CrabPotFish: 8,
+  FishingRodFish: 14,
 } as const;
 
-const TrapFish = z.object({
-  name: z.string(),
-  type: z.literal('trap'),
-  location: z.enum(['freshwater', 'ocean']),
-});
+const CrabPotFishLocationType = {
+  ocean: 'ocean',
+  freshwater: 'freshwater',
+} as const;
 
-const PoleFish = z.object({
-  name: z.string(),
-  type: z.literal('pole'),
-  spawnTimes: z.array(
+const FishingRodFishWeatherType = {
+  both: 'both',
+  rainy: 'rainy',
+  sunny: 'sunny',
+} as const;
+
+const CrabPotFishSchema = z
+  .array(z.string())
+  .length(EntryArrayLength.CrabPotFish)
+  .transform((arr) => {
+    const name = arr[0];
+    const location = arr[4];
+    return { name, location };
+  })
+  .pipe(
     z.object({
-      minTime: z.number(),
-      maxTime: z.number(),
-    })
-  ),
-  weather: z.enum(['sunny', 'rainy', 'both']),
-});
-type SpawnTimes = z.infer<typeof PoleFish.shape.spawnTimes>;
+      name: z.string(),
+      location: z.enum(CrabPotFishLocationType),
+    }),
+  );
 
-function transformSpawnTimes(
-  x: { spawnTimes: string[] },
-  ctx: z.core.$RefinementCtx
-) {
-  let spawnTimesArray: SpawnTimes;
-  if (x.spawnTimes.length === 2) {
-    spawnTimesArray = [
-      { minTime: +x.spawnTimes[0], maxTime: +x.spawnTimes[1] },
-    ];
-  } else if (x.spawnTimes.length === 4) {
-    spawnTimesArray = [
-      { minTime: +x.spawnTimes[0], maxTime: +x.spawnTimes[1] },
-      { minTime: +x.spawnTimes[2], maxTime: +x.spawnTimes[3] },
-    ];
-  } else {
-    ctx.issues.push({
-      code: 'custom',
-      input: x.spawnTimes,
-      path: ['spawnTimes'],
-      message: `Invalid spawnTimes "${x.spawnTimes}". Expected pairs like "600 900 1200 1600".`,
-    });
-    return z.NEVER;
-  }
-  return { ...x, spawnTimes: spawnTimesArray };
-}
+const FishingRodFishSchema = z
+  .array(z.string())
+  .length(EntryArrayLength.FishingRodFish)
+  .transform((arr) => {
+    const name = arr[0];
+    const spawnTimes = arr[5].split(/\s+/).map(Number);
+    const weather = arr[7];
+
+    return { name, spawnTimes, weather };
+  })
+  .refine((obj) => obj.spawnTimes.length % 2 === 0)
+  .transform((obj) => {
+    const spawnTimes = [];
+    for (let i = 0; i < obj.spawnTimes.length - 1; i += 2) {
+      spawnTimes.push({
+        minTime: obj.spawnTimes[i],
+        maxTime: obj.spawnTimes[i + 1],
+      });
+    }
+
+    return { ...obj, spawnTimes };
+  })
+  .pipe(
+    z.object({
+      name: z.string(),
+      spawnTimes: z.array(
+        z.object({
+          minTime: z.number(),
+          maxTime: z.number(),
+        }),
+      ),
+      weather: z.enum(FishingRodFishWeatherType),
+    }),
+  );
 
 export const FishJsonSchema = z.record(
   z.string(),
   z
     .string()
     .transform((x) => x.split('/'))
-    .pipe(
-      z.union([
-        z
-          .array(z.string())
-          .length(EntryArrayLength.TrapFish)
-          .transform(([name, type, , , location, , ,]) => ({
-            name,
-            type,
-            location,
-          }))
-          .pipe(TrapFish),
-        z
-          .array(z.string())
-          .length(EntryArrayLength.PoleFish)
-          .transform(([name, , , , , spawnTimes, , weather]) => ({
-            name,
-            type: 'pole' as const,
-            spawnTimes: spawnTimes.split(/\s+/),
-            weather,
-          }))
-          .transform(transformSpawnTimes)
-          .pipe(PoleFish),
-      ])
-    )
+    .pipe(z.xor([CrabPotFishSchema, FishingRodFishSchema])),
 );

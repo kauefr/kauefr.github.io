@@ -70,7 +70,7 @@ const Fish = z.object({
         x
           .split(',')
           .map((x) => x.trim())
-          .filter(Boolean)
+          .filter(Boolean),
       )
       .pipe(z.array(z.preprocess(conditionFromString, ValidConditionSchema))),
   ]),
@@ -86,5 +86,5 @@ export const LocationsJsonSchema = z.record(
   z.object({
     FishAreas: z.looseRecord(z.string(), z.unknown()),
     Fish: z.array(Fish),
-  })
+  }),
 );
