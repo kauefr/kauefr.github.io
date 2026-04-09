@@ -1,0 +1,26 @@
+<app-layout>
+  <table>
+    <thead>
+      <tr>
+        <th>Fish</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of items; track $index) {
+        <tr>
+          <td class="align-middle">
+            <span>{{ item.name }}</span>
+            <app-sprite
+              [style.width.px]="80"
+              [style.height.px]="80"
+              [sheet]="TextureType.TileSheets_Objects_2"
+              [index]="$index"
+            ></app-sprite>
+          </td>
+          <td>{{ item.time }}</td>
+        </tr>
+      } 
+    </tbody>
+  </table>
+</app-layout>

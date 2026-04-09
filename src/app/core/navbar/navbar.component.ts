@@ -21,5 +21,10 @@ export class NavbarComponent {
       icon: PrimeIcons.MONEY_BILL,
       routerLink: '/comparador-cdb-lca',
     },
+    {
+      label: 'Stardew Valley Fishing',
+      icon: PrimeIcons.CALENDAR_CLOCK,
+      routerLink: '/sv-fishing',
+    },
   ]);
 }
