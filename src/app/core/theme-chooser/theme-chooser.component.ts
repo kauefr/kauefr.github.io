@@ -9,7 +9,6 @@ import { FloatLabel } from 'primeng/floatlabel';
   imports: [FloatLabel, ReactiveFormsModule, Select],
   providers: [ThemeChooserService],
   templateUrl: './theme-chooser.component.html',
-  styleUrl: './theme-chooser.component.css',
 })
 export class ThemeChooserComponent {
   private readonly s = inject(ThemeChooserService);

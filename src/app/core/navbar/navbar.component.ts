@@ -22,6 +22,11 @@ export class NavbarComponent {
       routerLink: '/comparador-cdb-lca',
     },
     {
+      label: 'Seven Seas Idle',
+      icon: PrimeIcons.PLAY,
+      routerLink: '/ssi',
+    },
+    {
       label: 'Stardew Valley Fishing',
       icon: PrimeIcons.CALENDAR_CLOCK,
       routerLink: '/sv-fishing',
