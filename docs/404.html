@@ -9,8 +9,8 @@
     <p>Hello World</p>
     <script lang="js">
       function dispatchToApp(path) {
-        if (path.startsWith("/apps/angular/")) {
-          fetch("/apps/angular/index.html")
+        if (path.startsWith("/apps/angular14/")) {
+          fetch("/apps/angular14/index.html")
             .then((r) => (r.status === 200 ? r : Promise.reject()))
             .then((r) => r.text())
             .then((html) => {
@@ -18,9 +18,7 @@
               document.write(html);
               document.close();
             })
-            .catch(
-              console.error("Error loading App @ /apps/angular/index.html"),
-            );
+            .catch((error) => console.error(error));
         }
       }
       dispatchToApp(location.pathname);
