@@ -7,20 +7,29 @@
   </head>
   <body>
     <p>Hello World</p>
-    <script lang="js">
-      function dispatchToApp(path) {
-        if (path.startsWith("/apps/angular14/")) {
-          fetch("/apps/angular14/index.html")
-            .then((r) => (r.status === 200 ? r : Promise.reject()))
-            .then((r) => r.text())
-            .then((html) => {
-              document.open();
-              document.write(html);
-              document.close();
-            })
-            .catch((error) => console.error(error));
+    <script>
+      function fetchAndReplace(url) {
+        fetch(url)
+          .then((r) => (r.status === 200 ? r : Promise.reject()))
+          .then((r) => r.text())
+          .then((html) => {
+            document.open();
+            document.write(html);
+            document.close();
+          })
+          .catch((error) => console.error(error));
+      }
+
+      function dispatchToApp(pathname) {
+        const appsPaths = ["/apps/angular14/", "/apps/ts/"];
+
+        let appPath = appsPaths.find((p) => pathname.startsWith(p));
+
+        if (appPath) {
+          fetchAndReplace(p + "index.html");
         }
       }
+
       dispatchToApp(location.pathname);
     </script>
   </body>
